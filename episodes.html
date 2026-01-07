@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海绵宝宝 - 精彩剧集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0066CC',
+                        secondary: '#FFD100',
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#E6F2FF] font-sans">
+    <!-- 导航栏 -->
+    <nav class="bg-secondary sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-2">
+            <ul class="flex justify-center space-x-8 text-primary font-medium text-sm">
+                <li><a href="index.html" class="hover:text-blue-800">首页</a></li>
+                <li><a href="characters.html" class="hover:text-blue-800">角色介绍</a></li>
+                <li><a href="story.html" class="hover:text-blue-800">故事背景</a></li>
+                <li><a href="gallery.html" class="hover:text-blue-800">图片展示</a></li>
+                <li><a href="episodes.html" class="hover:text-blue-800 font-bold">精彩剧集</a></li>
+                <li><a href="contact.html" class="hover:text-blue-800">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 精彩剧集 -->
+    <section id="episodes" class="py-8">
+        <div class="container mx-auto px-4">
+            <h1 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-primary mb-8 text-center">经典剧集推荐</h1>
+            
+            <!-- 剧集列表 -->
+            <div class="space-y-6">
+                <!-- 第一集 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden flex flex-col md:flex-row">
+                    <div class="md:w-1/4">
+                        <img src="images/22.jpg" alt="求职记" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-3/4 p-6">
+                        <h2 class="text-lg font-semibold text-primary mb-1">第一季 第1集</h2>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">求职记</h3>
+                        <p class="text-gray-700 mb-4">海绵宝宝在蟹堡王餐厅应聘厨师的有趣故事，展现了他独特的烹饪天赋。</p>
+                        <div class="flex flex-wrap gap-4 text-gray-500 text-sm">
+                            <span>播出时间: 1999-05-01</span>
+                            <span>时长: 11分钟</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 第二集 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden flex flex-col md:flex-row">
+                    <div class="md:w-1/4">
+                        <img src="images/23.jpg" alt="泡泡伙伴" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-3/4 p-6">
+                        <h2 class="text-lg font-semibold text-primary mb-1">第一季 第2集</h2>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">泡泡伙伴</h3>
+                        <p class="text-gray-700 mb-4">海绵宝宝和派大星一起吹泡泡的欢乐时光，展现了真挚的友情。</p>
+                        <div class="flex flex-wrap gap-4 text-gray-500 text-sm">
+                            <span>播出时间: 1999-05-08</span>
+                            <span>时长: 11分钟</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 第三集 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden flex flex-col md:flex-row">
+                    <div class="md:w-1/4">
+                        <img src="images/24.jpg" alt="水母猎人" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-3/4 p-6">
+                        <h2 class="text-lg font-semibold text-primary mb-1">第一季 第3集</h2>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">水母猎人</h3>
+                        <p class="text-gray-700 mb-4">海绵宝宝和派大星一起去捕捉水母，却遇到了意想不到的麻烦。</p>
+                        <div class="flex flex-wrap gap-4 text-gray-500 text-sm">
+                            <span>播出时间: 1999-05-15</span>
+                            <span>时长: 11分钟</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-secondary mt-10 py-3">
+        <div class="container mx-auto px-4 text-center text-primary text-xs">
+            <p>© 2026 JX 版权所有</p>
+        </div>
+    </footer>
+
+    <script>
+        // 回到顶部按钮
+        const backToTopButton = document.createElement('button');
+        backToTopButton.innerHTML = '↑';
+        backToTopButton.className = 'fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700';
+        document.body.appendChild(backToTopButton);
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海绵宝宝 - 故事背景</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0066CC',
+                        secondary: '#FFD100',
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#E6F2FF] font-sans">
+    <!-- 导航栏 -->
+    <nav class="bg-secondary sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-2">
+            <ul class="flex justify-center space-x-8 text-primary font-medium text-sm">
+                <li><a href="index.html" class="hover:text-blue-800">首页</a></li>
+                <li><a href="characters.html" class="hover:text-blue-800">角色介绍</a></li>
+                <li><a href="story.html" class="hover:text-blue-800 font-bold">故事背景</a></li>
+                <li><a href="gallery.html" class="hover:text-blue-800">图片展示</a></li>
+                <li><a href="episodes.html" class="hover:text-blue-800">精彩剧集</a></li>
+                <li><a href="contact.html" class="hover:text-blue-800">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 故事背景 -->
+    <section id="story" class="py-8">
+        <div class="container mx-auto px-4">
+            <h1 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-primary mb-8 text-center">比基尼海滩的故事</h1>
+            
+            <!-- 顶部大图片 -->
+            <div class="mb-8 rounded-lg overflow-hidden shadow-sm">
+                <img src="images/5.jpg" alt="美味蟹堡" class="w-full h-64 object-cover">
+            </div>
+            
+            <!-- 内容卡片 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 神秘的海底世界 -->
+                <div class="bg-white rounded-xl shadow-sm p-5">
+                    <h2 class="text-lg font-bold text-primary mb-4">神秘的海底世界</h2>
+                    <div class="mb-4 rounded-lg overflow-hidden">
+                        <img src="images/6.jpg" alt="海底世界" class="w-full h-40 object-cover">
+                    </div>
+                    <p class="text-gray-700 text-sm">在太平洋深处的比基尼环礁下，有一个充满欢乐的海底城市——比基尼海滩。这里的居民们过着丰富多彩的生活，他们有自己的房子、工作和娱乐场所。</p>
+                </div>
+                
+                <!-- 蟹堡王餐厅 -->
+                <div class="bg-white rounded-xl shadow-sm p-5">
+                    <h2 class="text-lg font-bold text-primary mb-4">蟹堡王餐厅</h2>
+                    <div class="mb-4 rounded-lg overflow-hidden">
+                        <img src="images/11.jpg" alt="蟹堡王" class="w-full h-40 object-cover">
+                    </div>
+                    <p class="text-gray-700 text-sm">蟹堡王是比基尼海滩最著名的快餐店，由蟹老板经营。海绵宝宝在这里担任厨师，专门制作美味的蟹堡。这里的秘方配方是整个海底世界最受欢迎的美食秘密。</p>
+                </div>
+                
+                <!-- 日常生活 -->
+                <div class="bg-white rounded-xl shadow-sm p-5">
+                    <h2 class="text-lg font-bold text-primary mb-4">日常生活</h2>
+                    <div class="mb-4 rounded-lg overflow-hidden">
+                        <img src="images/12.jpg" alt="日常生活" class="w-full h-40 object-cover">
+                    </div>
+                    <p class="text-gray-700 text-sm">在比基尼海滩，居民们喜欢在果冻鱼捕捉场抓水母、在贝壳城市购物、在海底公园玩耍。这里的一切都充满了欢乐与温馨，是一个充满奇妙冒险的地方。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-secondary mt-10 py-3">
+        <div class="container mx-auto px-4 text-center text-primary text-xs">
+            <p>© 2026 JX 版权所有</p>
+        </div>
+    </footer>
+
+    <script>
+        // 回到顶部按钮
+        const backToTopButton = document.createElement('button');
+        backToTopButton.innerHTML = '↑';
+        backToTopButton.className = 'fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700';
+        document.body.appendChild(backToTopButton);
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
