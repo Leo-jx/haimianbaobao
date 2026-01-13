@@ -1,149 +1,167 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
+    <!-- 响应式元标签：适配移动端 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>海绵宝宝的世界</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0066CC',
-                        secondary: '#FFD100',
-                    },
-                }
-            }
+    <title>登录页面</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
         }
-    </script>
+
+        /* 页面主体：全屏居中布局 */
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: #f5f5f5;
+            /* flex 布局实现垂直+水平居中 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 登录容器：卡片式设计 */
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 登录标题样式 */
+        .login-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+            font-size: 24px;
+        }
+
+        /* 输入框组样式 */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        /* 标签样式 */
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* 输入框样式 */
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            /* 聚焦时取消默认边框 */
+            outline: none;
+        }
+
+        /* 输入框聚焦样式 */
+        .input-group input:focus {
+            border-color: #409eff;
+        }
+
+        /* 登录按钮样式 */
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #409eff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* 按钮 hover 效果 */
+        .login-btn:hover {
+            background-color: #337ecc;
+        }
+
+        /* 提示文本样式 */
+        .tip-text {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #f56c6c;
+            /* 默认隐藏提示 */
+            display: none;
+        }
+
+        body {
+            background-image: url("images/11.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
-<body class="bg-[#E6F2FF] font-sans">
-    <!-- 导航栏 -->
-    <nav class="bg-secondary sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-2">
-            <ul class="flex justify-center space-x-8 text-primary font-medium text-sm">
-                <li><a href="index.html" class="hover:text-blue-800 font-bold">首页</a></li>
-                <li><a href="characters.html" class="hover:text-blue-800">角色介绍</a></li>
-                <li><a href="story.html" class="hover:text-blue-800">故事背景</a></li>
-                <li><a href="gallery.html" class="hover:text-blue-800">图片展示</a></li>
-                <li><a href="episodes.html" class="hover:text-blue-800">精彩剧集</a></li>
-                <li><a href="contact.html" class="hover:text-blue-800">联系我们</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- 首页 -->
-    <section id="home" class="py-6">
-        <div class="container mx-auto px-4">
-            <!-- 欢迎横幅 -->
-            <div class="bg-white rounded-xl shadow-sm p-6 mb-8 flex flex-col md:flex-row gap-6">
-                <div class="md:w-1/2">
-                    <h1 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-primary mb-4">欢迎来到比基尼海滩！</h1>
-                    <p class="text-gray-700 mb-2">和海绵宝宝一起开启欢乐的海底之旅！</p>
-                    <p class="text-gray-600">在这里，你可以和海绵宝宝一起探索海底世界，品尝美味的蟹堡，和派大星一起抓水母，聆听章鱼哥的单簧管演奏！</p>
-                </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <img src="images/1.jpg" alt="海绵宝宝" class="rounded-lg w-full max-w-md">
-                </div>
+<body>
+    <!-- 登录容器 -->
+    <div class="login-container">
+        <h2 class="login-title">用户登录</h2>
+        <!-- 登录表单 -->
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">用户名</label>
+                <input type="text" id="username" placeholder="请输入用户名" required>
             </div>
-
-            <!-- 特色活动 -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                <div class="bg-white rounded-xl shadow-sm p-4 text-center">
-                    <img src="images/2.jpg" alt="美味蟹堡" class="w-full h-40 object-cover rounded-lg mb-4">
-                    <h2 class="text-lg font-semibold text-primary mb-2">美味蟹堡</h2>
-                    <p class="text-gray-600 text-sm">在蟹堡王品尝海绵宝宝制作的美味蟹堡，独特的配方让人回味无穷！</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-sm p-4 text-center">
-                    <img src="images/3.jpg" alt="捕捉水母" class="w-full h-40 object-cover rounded-lg mb-4">
-                    <h2 class="text-lg font-semibold text-primary mb-2">捕捉水母</h2>
-                    <p class="text-gray-600 text-sm">跟随海绵宝宝和派大星一起在果冻鱼捕捉场捕捉彩色的水母！</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-sm p-4 text-center">
-                    <img src="images/4.jpg" alt="吹泡泡" class="w-full h-40 object-cover rounded-lg mb-4">
-                    <h2 class="text-lg font-semibold text-primary mb-2">吹泡泡</h2>
-                    <p class="text-gray-600 text-sm">学习海绵宝宝独特的泡泡技巧，创造出各种形状的神奇泡泡！</p>
-                </div>
+            <div class="input-group">
+                <label for="password">密码</label>
+                <input type="password" id="password" placeholder="请输入密码" required>
             </div>
-
-            <!-- 最新动态 -->
-            <div>
-                <h2 class="text-xl font-bold text-primary mb-6 text-center">最新动态</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-                        <img src="images/5.jpg" alt="新剧集上线" class="w-full h-40 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-base font-semibold text-primary mb-2">新剧集上线</h3>
-                            <p class="text-gray-600 text-sm">全新一季海绵宝宝动画片即将开播，带来更多欢乐冒险！</p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-                        <img src="images/6.jpg" alt="周年庆典" class="w-full h-40 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-base font-semibold text-primary mb-2">周年庆典</h3>
-                            <p class="text-gray-600 text-sm">比基尼海滩20周年庆典活动，一起来参与这场盛大的派对！</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer class="bg-secondary mt-10 py-3">
-        <div class="container mx-auto px-4 text-center text-primary text-xs">
-            <p>© 2026 JX 版权所有</p>
-        </div>
-    </footer>
+            <button type="submit" class="login-btn">登录</button>
+            <p class="tip-text" id="tipText">密码错误，请重新输入！</p>
+        </form>
+    </div>
 
     <script>
-        // 回到顶部按钮
-        const backToTopButton = document.createElement('button');
-        backToTopButton.innerHTML = '↑';
-        backToTopButton.className = 'fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700';
-        document.body.appendChild(backToTopButton);
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.remove('opacity-0', 'invisible');
-                backToTopButton.classList.add('opacity-100', 'visible');
+        // 1. 获取 DOM 元素
+        const loginForm = document.getElementById('loginForm');
+        const passwordInput = document.getElementById('password');
+        const tipText = document.getElementById('tipText');
+
+        // 2. 定义正确的密码（可根据需求修改）
+        const CORRECT_PASSWORD = "123456";
+        // 定义首页路径（可根据需求修改为实际首页地址）
+        const HOME_PAGE_URL = "index1.html";
+
+        // 3. 监听表单提交事件
+        loginForm.addEventListener('submit', function (e) {
+            // 阻止表单默认提交行为
+            e.preventDefault();
+
+            // 获取输入的密码
+            const inputPassword = passwordInput.value.trim();
+
+            // 4. 密码验证逻辑
+            if (inputPassword === CORRECT_PASSWORD) {
+                // 密码正确：跳转到首页
+                window.location.href = HOME_PAGE_URL;
             } else {
-                backToTopButton.classList.remove('opacity-100', 'visible');
-                backToTopButton.classList.add('opacity-0', 'invisible');
+                // 密码错误：显示提示文本
+                tipText.style.display = "block";
+                // 3 秒后隐藏提示文本
+                setTimeout(() => {
+                    tipText.style.display = "none";
+                }, 3000);
             }
-        });
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // 导航栏滚动高亮
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav a');
-        
-        window.addEventListener('scroll', () => {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (pageYOffset >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('font-bold', 'text-blue-800');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('font-bold', 'text-blue-800');
-                }
-            });
         });
     </script>
 </body>
+
 </html>
