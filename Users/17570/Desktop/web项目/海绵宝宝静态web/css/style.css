@@ -1,0 +1,60 @@
+/* 全局样式 */
+.bg-primary { background-color: #0066CC; }
+.bg-secondary { background-color: #FFD100; }
+.text-primary { color: #0066CC; }
+.border-primary { border-color: #0066CC; }
+
+/* 导航栏样式 */
+nav ul li a:hover {
+    color: #004d99 !important;
+}
+
+nav ul li a.font-bold {
+    color: #004d99 !important;
+}
+
+/* 卡片悬停效果 */
+.hover-card {
+    transition: transform 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-5px);
+}
+
+/* 图片悬停缩放效果 */
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.02);
+}
+
+/* 回到顶部按钮 */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: #0066CC;
+    color: white;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: #0052a3;
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 登录页面特有的样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("images/11.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #409eff;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #409eff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #337ecc;
+        }
+
+        .tip-text {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #f56c6c;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 登录容器 -->
+    <div class="login-container">
+        <h2 class="login-title">用户登录</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">用户名</label>
+                <input type="text" id="username" placeholder="请输入用户名" required>
+            </div>
+            <div class="input-group">
+                <label for="password">密码</label>
+                <input type="password" id="password" placeholder="请输入密码" required>
+            </div>
+            <button type="submit" class="login-btn">登录</button>
+            <p class="tip-text" id="tipText">密码错误，请重新输入！</p>
+        </form>
+    </div>
+
+    <script>
+        // 登录验证逻辑
+        const loginForm = document.getElementById('loginForm');
+        const passwordInput = document.getElementById('password');
+        const tipText = document.getElementById('tipText');
+
+        const CORRECT_PASSWORD = "123456";
+        const HOME_PAGE_URL = "index1.html";
+
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const inputPassword = passwordInput.value.trim();
+
+            if (inputPassword === CORRECT_PASSWORD) {
+                window.location.href = HOME_PAGE_URL;
+            } else {
+                tipText.style.display = "block";
+                setTimeout(() => {
+                    tipText.style.display = "none";
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

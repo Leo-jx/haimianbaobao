@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 响应式元标签：适配移动端 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录页面</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        /* 页面主体：全屏居中布局 */
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: #f5f5f5;
+            /* flex 布局实现垂直+水平居中 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 登录容器：卡片式设计 */
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 登录标题样式 */
+        .login-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+            font-size: 24px;
+        }
+
+        /* 输入框组样式 */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        /* 标签样式 */
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* 输入框样式 */
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            /* 聚焦时取消默认边框 */
+            outline: none;
+        }
+
+        /* 输入框聚焦样式 */
+        .input-group input:focus {
+            border-color: #409eff;
+        }
+
+        /* 登录按钮样式 */
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #409eff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* 按钮 hover 效果 */
+        .login-btn:hover {
+            background-color: #337ecc;
+        }
+
+        /* 提示文本样式 */
+        .tip-text {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #f56c6c;
+            /* 默认隐藏提示 */
+            display: none;
+        }
+
+        body {
+            background-image: url("images/11.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 登录容器 -->
+    <div class="login-container">
+        <h2 class="login-title">用户登录</h2>
+        <!-- 登录表单 -->
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">用户名</label>
+                <input type="text" id="username" placeholder="请输入用户名" required>
+            </div>
+            <div class="input-group">
+                <label for="password">密码</label>
+                <input type="password" id="password" placeholder="请输入密码" required>
+            </div>
+            <button type="submit" class="login-btn">登录</button>
+            <p class="tip-text" id="tipText">密码错误，请重新输入！</p>
+        </form>
+    </div>
+
+    <script>
+        // 1. 获取 DOM 元素
+        const loginForm = document.getElementById('loginForm');
+        const passwordInput = document.getElementById('password');
+        const tipText = document.getElementById('tipText');
+
+        // 2. 定义正确的密码（可根据需求修改）
+        const CORRECT_PASSWORD = "123456";
+        // 定义首页路径（可根据需求修改为实际首页地址）
+        const HOME_PAGE_URL = "index.html";
+
+        // 3. 监听表单提交事件
+        loginForm.addEventListener('submit', function (e) {
+            // 阻止表单默认提交行为
+            e.preventDefault();
+
+            // 获取输入的密码
+            const inputPassword = passwordInput.value.trim();
+
+            // 4. 密码验证逻辑
+            if (inputPassword === CORRECT_PASSWORD) {
+                // 密码正确：跳转到首页
+                window.location.href = HOME_PAGE_URL;
+            } else {
+                // 密码错误：显示提示文本
+                tipText.style.display = "block";
+                // 3 秒后隐藏提示文本
+                setTimeout(() => {
+                    tipText.style.display = "none";
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+
+</html>
